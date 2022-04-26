@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bank OTP</title>
+<style>
+#otp_section {
+background-color: aqua;
+width:380px;
+}
+#phone {
+border: 2px solid black;
+border-width: 40px 10px 40px 10px;
+width: 200px;
+height:350px;
+float: left;
+border-radius: 10px;
+}
+p {
+text-align: center;
+color: red;
+}
+</style>
+</head>
+<body>
+<div>
+<h1>OTP generator</h1>
+<h6> validation</h6>
+</div>
+<div id="otp_section">
+<input id="user_value" type="tel" required placeholder="Enter Registered Number">
+<button onclick="otp()">Recieve OTP</button>
+</div>
+<div id="otp_validation">
+<input id="user_validation" type="tel" required placeholder="Enter OTP">
+<button onclick="validation()">Validate OTP</button>
+</div>
+<br>
+<div id="phone">
+<p id="ottp"></p>
+</div>
+<script>
+var otp_match;
+var otp_match_rev;
+function otp() {
+var data_base= [9944332211,9998887776,];
+var user_number=document.getElementById("user_value").value;
+var uservalidation=document.getElementById("user_validation");
+var ottps=document.getElementById("ottp");
+for(i=0;i<=data_base.length;i++) {
+var loop_data=data_base[i];
+if (user_number==loop_data) {
+var gen_otp= Math.floor(Math.random()*(3800,4099)+1000);
+alert("otp sent...////")
+ottp.innerHTML=gen_otp;
+uservalidation.value = gen_otp;
+var valls=uservalidation.value;
+var talls=parseInt(valls);
+otp_match_rev=talls;
+otp_match=gen_otp;
+break;
+}
+else {
+alert("wrong number kindly register your number and try again");
+break;
+}
+}
+}
+function validation() {
+if (otp_match==otp_match_rev){
+alert("validated")
+}
+else {
+alert ("wrong otp try again")
+}
+}
+</script>
+</body>
+</html>
